@@ -3,9 +3,9 @@ body {
     padding: 0;
     height: 100vh;
     background-image: url('background.jpg'); /* 替换为你的背景图片路径 */
-    background-size: cover;
+    /* background-size: cover;
     background-position: center;
-    background-repeat: no-repeat;
+    background-repeat: no-repeat; */
 }
 html, body {
     margin: 0;
@@ -13,7 +13,6 @@ html, body {
     height: 100%;
     width: 100%;
 }
-
 
 #map-container {
     padding-top: 300px;
@@ -39,12 +38,4 @@ html, body {
     left: 0px;
     pointer-events: none;
    
-}
-
-.background-container {
-    display: flex;
-    justify-content: center; /* 水平居中 */
-    align-items: center; /* 垂直居中 */
-    width: 100vw; /* 全屏宽度 */
-    height: 100vh; /* 全屏高度 */
 }
