@@ -3,9 +3,9 @@ body {
     padding: 0;
     height: 100vh;
     background-image: url('background.jpg'); /* 替换为你的背景图片路径 */
-    /* background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat; */
+    background-size: cover;
+    background-position: left;
+    background-repeat: no-repeat; 
 }
 html, body {
     margin: 0;
