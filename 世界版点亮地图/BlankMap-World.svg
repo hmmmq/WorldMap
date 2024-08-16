@@ -47,7 +47,7 @@
 .landxx
 {
 	fill: #c0c0c0;
-	stroke: #ffffff;
+	stroke: #A8A8A8; //#ffffff
 	stroke-width: 0.5;
 	fill-rule: evenodd;
 }

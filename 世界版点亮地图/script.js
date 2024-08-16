@@ -26,7 +26,6 @@ countryid = [
   "qa",
   "bh",
 ];
-
 const countryKeys = {
   q: "sg", //singapore
   w: "my", //malaysia
@@ -117,12 +116,28 @@ function createTextElement(svgElement, bbox, text) {
   textElement.setAttribute("z-index", "5");
   textElement.textContent = text;
   textElement.style.cursor = "move"; // 设置鼠标样式为移动手势
+  //获取到css里面的:
+  // root {
+  //     --padding-top: 300px; /*修改地图上下位置*/
+  //     --padding-left: 0x; /*修改地图左右位置*/
+  //     --background: url('background2.jpg'); /*修改背景图片路径*/
+  // }
+// 获取 :root 伪类的计算样式
+const rootStyles = getComputedStyle(document.documentElement);
 
-  let shiftX, shiftY;
+// 获取 CSS 变量的值
+let paddingTop = rootStyles.getPropertyValue('--padding-top').trim();
+console.log(paddingTop); // 打印 --padding-top 的值
+
+
+let paddingLeft = rootStyles.getPropertyValue('--padding-left').trim();
+console.log(paddingLeft); // 打印 --padding-left 的值
+
+let shiftX, shiftY;
   
   function moveAt(pageX, pageY) {
-    textElement.setAttribute("x", pageX - shiftX);
-    textElement.setAttribute("y", pageY - shiftY);
+    textElement.setAttribute("x", pageX - shiftX - paddingLeft);
+    textElement.setAttribute("y", pageY - shiftY - paddingTop);
   }
 
   function onMouseMove(event) {

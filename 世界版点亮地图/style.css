@@ -1,8 +1,14 @@
+:root {
+    --padding-top: 300px; /*修改地图上下位置*/
+    --padding-left: 0x; /*修改地图左右位置*/
+    --background: url('background2.jpg'); /*修改背景图片路径*/
+}
+
 body {
     margin: 0;
     padding: 0;
     height: 100vh;
-    background-image: url('background2.jpg'); /* 替换为你的背景图片路径 */
+    background-image: var(--background); /* 替换为你的背景图片路径 */
     background-size: cover;
     background-position: left;
     background-repeat: no-repeat; 
@@ -15,12 +21,21 @@ html, body {
 }
 
 #map-container {
-    padding-top: 300px;
-    /* padding-left: 200px; */
+    padding-top: var(--padding-top);
+    padding-left: var(--padding-left);
     width: 2754px;
     height: 1398px;
     position: relative;
     z-index: 2;
+}
+
+#svgElement {
+    width: 2754px;
+    height: 1398px;
+    position: absolute;
+    z-index: 3;
+    top: var(--padding-top);
+    left: var(--padding-left);
 }
 
 #svg-map{
@@ -28,13 +43,4 @@ html, body {
     margin-left:0px;
     width: 2754px;
     height: 1398px;
- 
-}
-#svgElement {
-    width: 2754px;
-    height: 1398px;
-    position: absolute;
-    z-index: 3;
-    top: 300px;
-    /* left: 200px; */
 }
