@@ -64,23 +64,19 @@ document.addEventListener("DOMContentLoaded", () => {
       if (!path.classList.contains("oceanxx") && !countryid.includes(path.id)) {
         path.style.fill = "#ffdead";
       }
-      if(countryid.includes(path.id)){
+      if (countryid.includes(path.id)) {
         path.style.fill = "#c0c0c0";
         path.addEventListener("click", (event) => {
-            path.style.fill = "#ffdead";
+          path.style.fill = "#ffdead";
         });
-      
+
         let titleElement = path.querySelector("title");
         if (titleElement) {
           const bbox = path.getBBox();
           createTextElement(svgElement, bbox, titleElement.textContent);
         }
-      
       }
-
     });
-
-
 
     //获取所有<g>标签元素
     const gs = svgDoc.querySelectorAll("g");
@@ -104,9 +100,6 @@ document.addEventListener("DOMContentLoaded", () => {
         }
       }
     });
-
-
-
   });
 });
 
@@ -129,22 +122,25 @@ function createTextElement(svgElement, bbox, text) {
 document.addEventListener("keydown", function (event) {
   const key = event.key.toLowerCase(); // 获取按下的键并转换为小写
   const countryId = countryKeys[key]; // 查找对应的国家ID
-
+  console.log(countryId); // 打印国家ID
   if (countryId) {
     highlightCountry(countryId); // 高亮显示国家
   }
 });
 
 //高亮显示国家
-function highlightCountry(countryId) {  
+function highlightCountry(countryId) {
   const svgObject = document.getElementById("svg-map");
   const svgDoc = svgObject.contentDocument;
-  const g = svgDoc.getElementById(countryId);
-  if (g) {
-    let paths = g.querySelectorAll("path");
+  const element = svgDoc.getElementById(countryId);
+  console.log(element);
+  //如果g是<g>标签
+  if (element.tagName.toLowerCase() === "g") {
+    let paths = element.querySelectorAll("path");
     paths.forEach((path) => {
-      path.style.fill = "#ffdead";
+        path.style.fill = "#ffdead";
     });
-  }
+} else if (element.tagName.toLowerCase() === "path") {
+    element.style.fill = "#ffdead";
 }
-
+}
