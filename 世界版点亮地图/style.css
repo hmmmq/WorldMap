@@ -2,7 +2,7 @@ body {
     margin: 0;
     padding: 0;
     height: 100vh;
-    background-image: url('background.jpg'); /* 替换为你的背景图片路径 */
+    background-image: url('background2.jpg'); /* 替换为你的背景图片路径 */
     background-size: cover;
     background-position: left;
     background-repeat: no-repeat; 
@@ -37,6 +37,4 @@ html, body {
     z-index: 3;
     top: 300px;
     /* left: 200px; */
-    pointer-events: none;
-   
 }

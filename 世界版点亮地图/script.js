@@ -111,10 +111,46 @@ function createTextElement(svgElement, bbox, text) {
   textElement.setAttribute("x", bbox.x + bbox.width / 2);
   textElement.setAttribute("y", bbox.y + bbox.height / 2);
   textElement.setAttribute("fill", "black");
-  textElement.setAttribute("font-size", "4px");
+  textElement.setAttribute("font-size", "20px");
   textElement.setAttribute("text-anchor", "middle");
   textElement.setAttribute("dominant-baseline", "middle");
+  textElement.setAttribute("z-index", "5");
   textElement.textContent = text;
+  textElement.style.cursor = "move"; // 设置鼠标样式为移动手势
+
+  let shiftX, shiftY;
+  
+  function moveAt(pageX, pageY) {
+    textElement.setAttribute("x", pageX - shiftX);
+    textElement.setAttribute("y", pageY - shiftY);
+  }
+
+  function onMouseMove(event) {
+    moveAt(event.pageX, event.pageY);
+  }
+
+  function onMouseUp() {
+    // 解绑移动事件
+    document.removeEventListener("mousemove", onMouseMove);
+    document.removeEventListener("mouseup", onMouseUp);
+  }
+
+  textElement.addEventListener("mousedown", function (event) {
+    event.preventDefault();
+
+    shiftX = event.clientX - textElement.getBoundingClientRect().left;
+    shiftY = event.clientY - textElement.getBoundingClientRect().top;
+
+    // 绑定移动和释放事件
+    document.addEventListener("mousemove", onMouseMove);
+    document.addEventListener("mouseup", onMouseUp);
+  });
+
+  // 防止默认拖拽行为（例如在某些浏览器中可能触发的拖动效果）
+  textElement.addEventListener("dragstart", function () {
+    return false;
+  });
+
   svgElement.appendChild(textElement);
 }
 
