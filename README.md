@@ -39,4 +39,4 @@
       - c: qatar
       - v: bahrain
 # 效果图
-![alt text](image.png)
+![网页效果图](./image.png)
