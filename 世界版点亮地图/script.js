@@ -127,17 +127,16 @@ const rootStyles = getComputedStyle(document.documentElement);
 
 // 获取 CSS 变量的值
 let paddingTop = rootStyles.getPropertyValue('--padding-top').trim();
-console.log(paddingTop); // 打印 --padding-top 的值
-
+let paddingTopValue = parseInt(paddingTop, 10);
 
 let paddingLeft = rootStyles.getPropertyValue('--padding-left').trim();
-console.log(paddingLeft); // 打印 --padding-left 的值
+let paddingLeftValue = parseInt(paddingLeft, 10);
 
 let shiftX, shiftY;
   
   function moveAt(pageX, pageY) {
-    textElement.setAttribute("x", pageX - shiftX - paddingLeft);
-    textElement.setAttribute("y", pageY - shiftY - paddingTop);
+    textElement.setAttribute("x", pageX - shiftX - paddingLeftValue);
+    textElement.setAttribute("y", pageY - shiftY - paddingTopValue);
   }
 
   function onMouseMove(event) {
@@ -173,7 +172,7 @@ let shiftX, shiftY;
 document.addEventListener("keydown", function (event) {
   const key = event.key.toLowerCase(); // 获取按下的键并转换为小写
   const countryId = countryKeys[key]; // 查找对应的国家ID
-  console.log(countryId); // 打印国家ID
+  // console.log(countryId); // 打印国家ID
   if (countryId) {
     highlightCountry(countryId); // 高亮显示国家
   }
@@ -184,7 +183,7 @@ function highlightCountry(countryId) {
   const svgObject = document.getElementById("svg-map");
   const svgDoc = svgObject.contentDocument;
   const element = svgDoc.getElementById(countryId);
-  console.log(element);
+  // console.log(element);
   //如果g是<g>标签
   if (element.tagName.toLowerCase() === "g") {
     let paths = element.querySelectorAll("path");
