@@ -14,27 +14,27 @@
   - 2.按下快捷键点亮;
     - 2.1具体快捷键内容:
     - 快捷键:点亮国家
-      - q: "sg", //singapore
-      - w: "my", //malaysia
-      - e: "ph", //philippines
-      - r: "la", //laos
-      - t: "th", //thailand
-      - y: "hk", //hongkong
-      - u: "mo", //macau
-      - i: "np", //nepal
-      - o: "kr", //south korea
-      - p: "uz", //uzbekistan
-      - a: "az", //azerbaijan
-      - s: "ge", //georgia
-      - d: "am", //armenia
-      - f: "md", //moldova
-      - g: "au", //australia
-      - h: "nz", //new zealand
-      - j: "br", //brazil
-      - k: "kz", //kazakhstan
-      - l: "sa", //saudi arabia
-      - z: "ae", //united arab emirates
-      - x: "lb", //lebanon
-      - c: "qa", //qatar
-      - v: "bh", //bahrain
+      - q: singapore
+      - w: malaysia
+      - e: philippines
+      - r: laos
+      - t: thailand
+      - y: hongkong
+      - u: macau
+      - i: nepal
+      - o: south korea
+      - p: uzbekistan
+      - a: azerbaijan
+      - s: georgia
+      - d: armenia
+      - f: moldova
+      - g: australia
+      - h: new zealand
+      - j: brazil
+      - k: kazakhstan
+      - l: saudi arabia
+      - z: united arab emirates
+      - x: lebanon
+      - c: qatar
+      - v: bahrain
 ![alt text](image.png)
