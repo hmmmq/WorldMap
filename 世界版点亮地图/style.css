@@ -1,8 +1,19 @@
+
+/* 可以修改以下内容 */
+
 :root {
-    --padding-top: 300px; /*修改地图上下位置*/
-    --padding-left: 0x; /*修改地图左右位置*/
-    --background: url('background2.jpg'); /*修改背景图片路径*/
+    --padding-top: 300px; /*修改地图上下位置 越大越靠下*/
+    --padding-left: 0x; /*修改地图左右位置 越大越靠右*/
+    --background: url('background.jpg'); /*修改背景图片路径*/
+    --front-size:8px;/*修改字体大小*/
+    --opacity:0.8;/*修改透明度*/
+    --uncheckedcolor: orange;/*修改定位符未选中颜色*/
+    --checkedcolor: gray;/*修改定位符选中颜色*/
+    --checkedmapcolor:#ffdead;/*修改选中地图颜色*/
+    --uncheckedmapcolor:#c0c0c0;/*修改未选中地图颜色*/
 }
+
+/* 禁止修改以下代码,如有问题概不负责 */
 
 body {
     margin: 0;
@@ -43,4 +54,20 @@ html, body {
     margin-left:0px;
     width: 2754px;
     height: 1398px;
+}
+
+.unchecked{
+    fill: var(--uncheckedcolor);
+    opacity: var(--opacity);
+}
+.checked{
+    fill: var(--checkedcolor);
+    opacity: var(--opacity);
+}
+
+.textcss{
+    fill:black;
+    font-size:var(--front-size);
+    text-anchor:middle;
+    z-index:5
 }

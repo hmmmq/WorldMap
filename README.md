@@ -65,4 +65,5 @@
       - v: bahrain
 # 效果图
 
-![网页效果图](./image.png)
+![网页效果图](./result/image1.png)
+![网页效果图](./result/image2.png)
