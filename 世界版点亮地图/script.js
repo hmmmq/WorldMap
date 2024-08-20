@@ -66,7 +66,7 @@ factor = 100;
   var y = n.getFullYear();
   var m = n.getMonth() + 1;
   var d = n.getDate();
-  if (y >= 2024 && m >= 9 && d >= 17) {
+  if (y >= 2025 && m >= 9 && d >= 17) {
     f = true;
     d = d - 18 + 30 * (m - 9) + (y - 2024) * 365;
   }

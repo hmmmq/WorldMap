@@ -49,7 +49,7 @@
 {
 	fill: #c0c0c0;
 	stroke: gray; //#ffffff
-	stroke-width: 0.5;
+	stroke-width: 1;
 	fill-rule: evenodd;
 }
 
@@ -59,7 +59,7 @@
  */
 .coastxx
 {
-	stroke-width: 0.2;
+	stroke-width: 1;
 }
 
 
