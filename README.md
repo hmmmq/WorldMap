@@ -45,7 +45,7 @@
       - e: philippines
       - r: laos
       - t: thailand
-      - y: hongkong
+      - y: hongkong + macau
       - u: macau
       - i: nepal
       - o: south korea
@@ -54,7 +54,7 @@
       - s: georgia
       - d: armenia
       - f: moldova
-      - g: australia
+      - g: australia + new zealand
       - h: new zealand
       - j: brazil
       - k: kazakhstan
@@ -62,7 +62,9 @@
       - z: united arab emirates
       - x: lebanon
       - c: qatar
-      - v: bahrain
+      - v: Kyrgyzstan
+      - b: Morocco
+      - n: China
 # 效果图
 
 ![网页效果图](./result/image1.png)
