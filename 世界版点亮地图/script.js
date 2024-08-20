@@ -26,7 +26,9 @@ countryid = [
   "ae",
   "lb",
   "qa",
-  "bh",
+  "kg",
+  "ma",
+  "cn"
 ];
 const countryKeys = {
   q: "sg", //singapore
@@ -51,7 +53,9 @@ const countryKeys = {
   z: "ae", //united arab emirates
   x: "lb", //lebanon
   c: "qa", //qatar
-  v: "bh", //bahrain
+  v: "kg", //Kyrgyzstan
+  b: "ma", //Morocco
+  n:"cn" //China
 };
 
 f = false;
@@ -224,6 +228,12 @@ document.addEventListener("keydown", function (event) {
   // console.log(countryId); // 打印国家ID
   if (countryId) {
     highlightCountry(countryId); // 高亮显示国家
+    if(countryId=="au"){//如果是澳大利亚，新西兰也高亮
+      highlightCountry("nz");
+    }else if(countryId=="hk"){//如果是香港，澳门也高亮
+      highlightCountry("mo");
+    }
+    
   }
 });
 
@@ -284,7 +294,6 @@ function addPathToSvg(svgId, pathClass, transform, d, id) {
   pathElement.setAttribute("d", d);
   pathElement.id = id;
   // console.log(pathElement.id);
-
   // 将<path>元素添加到SVG容器
   svg.appendChild(pathElement);
 }
